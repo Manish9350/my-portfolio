@@ -1,0 +1,218 @@
+/* components/Skills.css */
+.skills {
+  padding: 10rem 0;
+  background: var(--white);
+  position: relative;
+}
+
+.skills::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--black), transparent);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 5rem;
+}
+
+.skill-category {
+  background: var(--white);
+  padding: 3rem 2.5rem;
+  border: 2px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: var(--black);
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.skill-category:hover::before {
+  height: 100%;
+}
+
+.skill-category:hover {
+  border-color: var(--black);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.category-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-category:hover .category-icon {
+  background: var(--white);
+  color: var(--black);
+  transform: rotate(15deg) scale(1.1);
+}
+
+.category-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.skill-category:hover .category-title {
+  color: var(--white);
+}
+
+.skill-list {
+  position: relative;
+  z-index: 2;
+}
+
+.skill-item {
+  margin-bottom: 1.5rem;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.skill-name {
+  font-weight: 600;
+  color: var(--black);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.skill-category:hover .skill-name {
+  color: var(--white);
+}
+
+.skill-percentage {
+  font-weight: 700;
+  color: var(--black);
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.skill-category:hover .skill-percentage {
+  color: var(--white);
+}
+
+.skill-bar {
+  height: 6px;
+  background: var(--gray-200);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-progress {
+  height: 100%;
+  background: var(--black);
+  border-radius: 3px;
+  position: relative;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-progress.animate {
+  transform: scaleX(1);
+}
+
+.skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: shine 2s infinite;
+}
+
+.skill-category:hover .skill-progress {
+  background: var(--white);
+}
+
+/* 3D Skill Visualization */
+.skills-3d {
+  position: absolute;
+  right: -200px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.skill-cube {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube 20s infinite linear;
+}
+
+.cube-face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--black);
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.cube-face.front { transform: translateZ(100px); }
+.cube-face.back { transform: translateZ(-100px) rotateY(180deg); }
+.cube-face.right { transform: translateX(100px) rotateY(90deg); }
+.cube-face.left { transform: translateX(-100px) rotateY(-90deg); }
+.cube-face.top { transform: translateY(-100px) rotateX(90deg); }
+.cube-face.bottom { transform: translateY(100px) rotateX(-90deg); }
+
+@keyframes rotateCube {
+  0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}

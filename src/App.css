@@ -1,0 +1,212 @@
+/* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-xl: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+}
+
+/* Import Premium Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: var(--black);
+  background: var(--white);
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+/* Custom Cursor - Fixed Version */
+.cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--black);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--black);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.6s ease;
+  transform: translate(-50%, -50%);
+}
+
+.cursor.hover {
+  width: 50px;
+  height: 50px;
+  background: var(--black);
+  border: 2px solid var(--black);
+}
+
+.cursor-follower.hover {
+  opacity: 0;
+}
+
+/* Hide default cursor */
+body {
+  cursor: none;
+}
+
+body:hover .cursor,
+body:hover .cursor-follower {
+  opacity: 1;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--black);
+  position: relative;
+  letter-spacing: -0.02em;
+  font-style: italic;
+}
+
+.section-title::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 100%;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--gray-300);
+  z-index: -1;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--black);
+  animation: linePulse 2s infinite;
+}
+
+@keyframes linePulse {
+  0%, 100% { transform: translateX(-50%) scaleX(1); }
+  50% { transform: translateX(-50%) scaleX(1.2); }
+}
+
+/* Magnetic Buttons */
+.magnetic-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.magnetic-btn:hover {
+  transform: translate(var(--tx, 0), var(--ty, 0));
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--black);
+  z-index: 1001;
+  transition: width 0.1s ease;
+}
+
+/* Premium Typography Classes */
+.display-font {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.accent-font {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.body-font {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* Text Animations */
+.text-reveal {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.char {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* Add to App.css */
+/* Hide default cursor when custom cursor is active */
+body.has-custom-cursor {
+  cursor: none;
+}
+
+/* Ensure cursor is visible on elements that need it */
+body.has-custom-cursor button,
+body.has-custom-cursor a,
+body.has-custom-cursor input,
+body.has-custom-cursor textarea {
+  cursor: none;
+}
+
+/* Fallback for touch devices */
+@media (max-width: 768px), (hover: none) {
+  body.has-custom-cursor {
+    cursor: auto;
+  }
+  
+  body.has-custom-cursor button,
+  body.has-custom-cursor a,
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea {
+    cursor: pointer;
+  }
+}

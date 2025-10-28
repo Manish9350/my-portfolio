@@ -1,0 +1,312 @@
+/* components/Cursor.css */
+.cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  background: transparent;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #000000;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.6s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* Hover States */
+.cursor.hover {
+  width: 50px;
+  height: 50px;
+  background: #000000;
+  border: 2px solid #000000;
+  backdrop-filter: invert(1);
+}
+
+.cursor-follower.hover {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+/* Specific element hover effects */
+.cursor.hover-btn {
+  width: 60px;
+  height: 60px;
+  background: #000000;
+  border: 2px solid #000000;
+}
+
+.cursor.hover-link {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid #000000;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cursor.hover-text {
+  width: 4px;
+  height: 4px;
+  background: #000000;
+  border: none;
+  mix-blend-mode: normal;
+}
+
+.cursor.hover-image {
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border: 2px solid #000000;
+  border-radius: 20%;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Click animation */
+.cursor.click {
+  transform: translate(-50%, -50%) scale(0.8);
+  background: #000000;
+}
+
+.cursor-follower.click {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0;
+}
+
+/* Loading state */
+.cursor.loading {
+  animation: cursorSpin 1s linear infinite;
+  border-top-color: transparent;
+}
+
+@keyframes cursorSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Hide cursor on touch devices */
+@media (max-width: 768px), (hover: none) {
+  .cursor,
+  .cursor-follower {
+    display: none;
+  }
+  
+  body {
+    cursor: auto;
+  }
+}
+
+/* Custom cursor colors for different sections */
+.hero .cursor {
+  border-color: #000000;
+}
+
+.hero .cursor-follower {
+  background: #000000;
+}
+
+.skills .cursor {
+  border-color: #000000;
+}
+
+.skills .cursor.hover {
+  background: #000000;
+}
+
+.projects .cursor.hover {
+  background: #000000;
+  mix-blend-mode: difference;
+}
+
+/* Smooth entrance animation */
+.cursor,
+.cursor-follower {
+  opacity: 0;
+  animation: cursorFadeIn 0.5s ease forwards;
+}
+
+@keyframes cursorFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Pulse animation for attention */
+.cursor.pulse {
+  animation: cursorPulse 2s ease-in-out infinite;
+}
+
+@keyframes cursorPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Trail effect */
+.cursor-trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  animation: trailFade 0.6s ease forwards;
+}
+
+@keyframes trailFade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+/* Magnetic field effect */
+.magnetic-field {
+  position: fixed;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9996;
+  transform: translate(-50%, -50%);
+  animation: magneticPulse 2s ease-in-out infinite;
+}
+
+@keyframes magneticPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.1;
+  }
+}
+
+/* Cursor text label */
+.cursor-label {
+  position: fixed;
+  background: #000000;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  pointer-events: none;
+  z-index: 10000;
+  white-space: nowrap;
+  transform: translate(20px, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-label.show {
+  opacity: 1;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .cursor {
+    border-color: #ffffff;
+    mix-blend-mode: difference;
+  }
+  
+  .cursor-follower {
+    background: #ffffff;
+  }
+  
+  .cursor.hover {
+    background: #ffffff;
+    border-color: #ffffff;
+  }
+  
+  .cursor-trail {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Performance optimizations */
+.cursor,
+.cursor-follower,
+.cursor-trail {
+  will-change: transform, opacity, width, height;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .cursor,
+  .cursor-follower {
+    transition: none;
+    animation: none;
+  }
+  
+  .cursor-trail {
+    display: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .cursor {
+    border-width: 3px;
+  }
+  
+  .cursor-follower {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Custom cursor states for specific interactions */
+.cursor.dragging {
+  width: 25px;
+  height: 25px;
+  background: #000000;
+  border: 2px solid #000000;
+  animation: cursorDrag 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes cursorDrag {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.cursor.typing {
+  width: 4px;
+  height: 20px;
+  background: #000000;
+  border: none;
+  border-radius: 2px;
+  animation: cursorType 0.8s ease-in-out infinite;
+}
+
+@keyframes cursorType {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
