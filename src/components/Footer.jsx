@@ -57,7 +57,7 @@ const Footer = () => {
           {/* Main Footer Section */}
           <div className="footer-main">
             <div className="footer-info">
-              <h3 className="footer-logo">John Doe</h3>
+              <h3 className="footer-logo">Manish Verma</h3>
               <p className="footer-description">
                 Full Stack Developer passionate about creating amazing digital experiences 
                 and solving complex problems through code.
