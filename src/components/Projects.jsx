@@ -28,7 +28,7 @@ const Projects = () => {
     {
       title: "Weather Dashboard",
       description: "Real-time weather application with beautiful data visualization, location-based forecasts, and interactive charts.",
-      tech: ["React", "D3.js", "API Integration", "Chart.js"],
+      tech: ["React",  "API Integration"],
       image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop",
       liveDemo: `https://weather-app-zeta-one-51.vercel.app/`,
       sourceCode: `https://github.com/Manish9350/weather-app`
