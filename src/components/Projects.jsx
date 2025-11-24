@@ -14,8 +14,8 @@ const Projects = () => {
       description: "A full-stack e-commerce solution with React, Node.js, and MongoDB featuring secure payments, user authentication, and admin dashboard.",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
       image: "https://repository-images.githubusercontent.com/403509239/c50ef91e-f939-4304-ae06-f3e9725a23ad",
-      liveDemo: "#",
-      sourceCode: "https://github.com/Manish9350/e-commerce"
+      liveDemo: "https://legendary-liger-faf6a1.netlify.app/",
+      sourceCode: "https://github.com/Manish9350/college-project-E-Commerce-"
     },
     {
       title: "Uber Clone",
